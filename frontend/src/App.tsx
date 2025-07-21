@@ -10,10 +10,15 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import { bookOutline, timeOutline, helpCircleOutline, personOutline } from 'ionicons/icons';
+
+// Pages
+import Quran from './pages/Quran';
+import PrayerTimes from './pages/PrayerTimes';
+import Questions from './pages/Questions';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -52,31 +57,44 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
+          <Route exact path="/quran">
+            <Quran />
           </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
+          <Route exact path="/prayer-times">
+            <PrayerTimes />
           </Route>
-          <Route path="/tab3">
-            <Tab3 />
+          <Route path="/questions">
+            <Questions />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
           </Route>
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to="/quran" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+          <IonTabButton tab="quran" href="/quran">
+            <IonIcon aria-hidden="true" icon={bookOutline} />
+            <IonLabel>Al-Quran</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+          <IonTabButton tab="prayer-times" href="/prayer-times">
+            <IonIcon aria-hidden="true" icon={timeOutline} />
+            <IonLabel>Waktu Sholat</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+          <IonTabButton tab="questions" href="/questions">
+            <IonIcon aria-hidden="true" icon={helpCircleOutline} />
+            <IonLabel>Tanya Jawab</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="profile" href="/profile">
+            <IonIcon aria-hidden="true" icon={personOutline} />
+            <IonLabel>Profil</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
