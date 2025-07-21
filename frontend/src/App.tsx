@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 
 // Pages
 import Quran from './pages/Quran';
+import SurahReader from './pages/SurahReader';
 import PrayerTimes from './pages/PrayerTimes';
 import Questions from './pages/Questions';
 import Profile from './pages/Profile';
@@ -69,6 +70,9 @@ const App: React.FC = () => {
           <IonRouterOutlet>
             <Route exact path="/quran">
               <Quran />
+            </Route>
+            <Route exact path="/quran/surah/:surahNumber">
+              <SurahReader />
             </Route>
             <Route exact path="/prayer-times">
               <PrayerTimes />
