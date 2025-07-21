@@ -1,0 +1,46 @@
+{
+  "name": "Al-Lail",
+  "name_translations": {
+    "ar": "الليل",
+    "en": "The Night",
+    "id": "Malam"
+  },
+  "number_of_ayah": 21,
+  "number_of_surah": 92,
+  "place": "Mecca",
+  "recitation": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/092.mp3",
+  "type": "Makkiyah",
+  "recitations": [
+    {
+      "name": "Mishari Rashid al-`Afasy",
+      "audio_url": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/092.mp3"
+    },
+    {
+      "name": "Abdur-Rahman as-Sudais",
+      "audio_url": "https://download.quranicaudio.com/quran/abdurrahmaan_as-sudays/092.mp3"
+    },
+    {
+      "name": "Saad al-Ghamdi",
+      "audio_url": "https://download.quranicaudio.com/quran/sa3d_al-ghaamidi/complete/092.mp3"
+    }
+  ],
+  "verses": [
+    {
+      "number": 1,
+      "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "translation_en": "[Placeholder verse - needs complete QuranJSON data]",
+      "translation_id": "[Placeholder verse - memerlukan data QuranJSON lengkap]"
+    }
+  ],
+  "tafsir": {
+    "id": {
+      "kemenag": {
+        "name": "Kemenag",
+        "source": "Aplikasi Quran Kementrian Agama Republik Indonesia",
+        "text": {
+          "1": "[Tafsir untuk Al-Lail - memerlukan data lengkap dari sumber QuranJSON]"
+        }
+      }
+    }
+  }
+}

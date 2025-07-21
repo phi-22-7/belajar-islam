@@ -1,0 +1,46 @@
+{
+  "name": "Ad-Dukhan",
+  "name_translations": {
+    "ar": "الدخان",
+    "en": "The Smoke",
+    "id": "Kabut"
+  },
+  "number_of_ayah": 59,
+  "number_of_surah": 44,
+  "place": "Mecca",
+  "recitation": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/044.mp3",
+  "type": "Makkiyah",
+  "recitations": [
+    {
+      "name": "Mishari Rashid al-`Afasy",
+      "audio_url": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/044.mp3"
+    },
+    {
+      "name": "Abdur-Rahman as-Sudais",
+      "audio_url": "https://download.quranicaudio.com/quran/abdurrahmaan_as-sudays/044.mp3"
+    },
+    {
+      "name": "Saad al-Ghamdi",
+      "audio_url": "https://download.quranicaudio.com/quran/sa3d_al-ghaamidi/complete/044.mp3"
+    }
+  ],
+  "verses": [
+    {
+      "number": 1,
+      "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "translation_en": "[Placeholder verse - needs complete QuranJSON data]",
+      "translation_id": "[Placeholder verse - memerlukan data QuranJSON lengkap]"
+    }
+  ],
+  "tafsir": {
+    "id": {
+      "kemenag": {
+        "name": "Kemenag",
+        "source": "Aplikasi Quran Kementrian Agama Republik Indonesia",
+        "text": {
+          "1": "[Tafsir untuk Ad-Dukhan - memerlukan data lengkap dari sumber QuranJSON]"
+        }
+      }
+    }
+  }
+}

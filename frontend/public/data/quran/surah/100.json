@@ -1,0 +1,46 @@
+{
+  "name": "Al-Adiyat",
+  "name_translations": {
+    "ar": "العاديات",
+    "en": "The Chargers",
+    "id": "Kuda Yang Berlari Kencang"
+  },
+  "number_of_ayah": 11,
+  "number_of_surah": 100,
+  "place": "Mecca",
+  "recitation": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/100.mp3",
+  "type": "Makkiyah",
+  "recitations": [
+    {
+      "name": "Mishari Rashid al-`Afasy",
+      "audio_url": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/100.mp3"
+    },
+    {
+      "name": "Abdur-Rahman as-Sudais",
+      "audio_url": "https://download.quranicaudio.com/quran/abdurrahmaan_as-sudays/100.mp3"
+    },
+    {
+      "name": "Saad al-Ghamdi",
+      "audio_url": "https://download.quranicaudio.com/quran/sa3d_al-ghaamidi/complete/100.mp3"
+    }
+  ],
+  "verses": [
+    {
+      "number": 1,
+      "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "translation_en": "[Placeholder verse - needs complete QuranJSON data]",
+      "translation_id": "[Placeholder verse - memerlukan data QuranJSON lengkap]"
+    }
+  ],
+  "tafsir": {
+    "id": {
+      "kemenag": {
+        "name": "Kemenag",
+        "source": "Aplikasi Quran Kementrian Agama Republik Indonesia",
+        "text": {
+          "1": "[Tafsir untuk Al-Adiyat - memerlukan data lengkap dari sumber QuranJSON]"
+        }
+      }
+    }
+  }
+}
