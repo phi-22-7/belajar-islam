@@ -12,10 +12,6 @@ Rails.application.routes.draw do
     end
     
     # Islamic content routes
-    get 'quran/:surah/:ayah', to: 'quran#get_ayah'
-    get 'quran/:surah', to: 'quran#get_surah'
-    get 'quran', to: 'quran#index'
-    
     get 'prayer-times/:city', to: 'prayer_times#get_times'
     get 'cities', to: 'prayer_times#cities'
     
