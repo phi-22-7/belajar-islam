@@ -1,9 +1,9 @@
 import { Surah, SurahWithVerses } from '../services/quran';
-import { PrayerTimesResponse } from '../services/prayer-times';
+import { PrayerTimesResponse, City } from '../services/prayer-times';
 
 interface CachedData {
   timestamp: number;
-  data: any;
+  data: unknown;
 }
 
 class OfflineService {
@@ -37,7 +37,7 @@ class OfflineService {
         return null;
       }
 
-      return cachedData.data;
+      return cachedData.data as Surah[];
     } catch (error) {
       console.error('Error reading cached surahs:', error);
       return null;
@@ -65,7 +65,7 @@ class OfflineService {
         return null;
       }
 
-      return cachedData.data;
+      return cachedData.data as SurahWithVerses;
     } catch (error) {
       console.error('Error reading cached surah:', error);
       return null;
@@ -96,14 +96,14 @@ class OfflineService {
         return null;
       }
 
-      return cachedData.data;
+      return cachedData.data as PrayerTimesResponse;
     } catch (error) {
       console.error('Error reading cached prayer times:', error);
       return null;
     }
   }
 
-  static cacheCities(cities: any[]): void {
+  static cacheCities(cities: City[]): void {
     const cachedData: CachedData = {
       timestamp: Date.now(),
       data: cities
@@ -111,7 +111,7 @@ class OfflineService {
     localStorage.setItem(this.CITIES_KEY, JSON.stringify(cachedData));
   }
 
-  static getCachedCities(): any[] | null {
+  static getCachedCities(): City[] | null {
     try {
       const cached = localStorage.getItem(this.CITIES_KEY);
       if (!cached) return null;
@@ -124,7 +124,7 @@ class OfflineService {
         return null;
       }
 
-      return cachedData.data;
+      return cachedData.data as City[];
     } catch (error) {
       console.error('Error reading cached cities:', error);
       return null;

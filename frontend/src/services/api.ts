@@ -38,11 +38,12 @@ class ApiService {
       
       return { data };
     } catch (error) {
+      console.error('Network error:', error);
       return { error: 'Network error' };
     }
   }
 
-  static async post<T>(endpoint: string, body: any): Promise<ApiResponse<T>> {
+  static async post<T>(endpoint: string, body: unknown): Promise<ApiResponse<T>> {
     try {
       const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'POST',
@@ -58,6 +59,7 @@ class ApiService {
       
       return { data };
     } catch (error) {
+      console.error('Network error:', error);
       return { error: 'Network error' };
     }
   }
@@ -75,14 +77,15 @@ class ApiService {
       if (!response.ok) {
         return { error: data.error || data.errors?.join(', ') || 'Request failed' };
       }
-      
+
       return { data };
     } catch (error) {
+      console.error('Network error:', error);
       return { error: 'Network error' };
     }
   }
 
-  static async put<T>(endpoint: string, body: any): Promise<ApiResponse<T>> {
+  static async put<T>(endpoint: string, body: unknown): Promise<ApiResponse<T>> {
     try {
       const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'PUT',
@@ -98,6 +101,7 @@ class ApiService {
       
       return { data };
     } catch (error) {
+      console.error('Network error:', error);
       return { error: 'Network error' };
     }
   }
@@ -117,6 +121,7 @@ class ApiService {
       
       return { data };
     } catch (error) {
+      console.error('Network error:', error);
       return { error: 'Network error' };
     }
   }

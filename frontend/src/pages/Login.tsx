@@ -49,6 +49,7 @@ const Login: React.FC = () => {
         setShowAlert(true);
       }
     } catch (error) {
+      console.error('Login error:', error);
       setAlertMessage('Terjadi kesalahan saat login');
       setShowAlert(true);
     }

@@ -64,6 +64,7 @@ const Register: React.FC = () => {
         history.push('/login');
       }, 1500);
     } catch (error) {
+      console.error('Registration error:', error);
       setAlertMessage('Terjadi kesalahan saat registrasi');
       setShowAlert(true);
     }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -38,6 +38,17 @@ const PrayerTimes: React.FC = () => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [isOnline, setIsOnline] = useState(OfflineService.isOnline());
 
+  const loadPrayerTimes = useCallback(async () => {
+    try {
+      const data = await PrayerTimesService.getPrayerTimes(selectedCity);
+      setPrayerData(data);
+    } catch (error) {
+      console.error('Error loading prayer times:', error);
+      setToastMessage('Failed to load prayer times');
+      setShowToast(true);
+    }
+  }, [selectedCity]);
+
   useEffect(() => {
     loadInitialData();
 
@@ -58,7 +69,7 @@ const PrayerTimes: React.FC = () => {
     if (selectedCity) {
       loadPrayerTimes();
     }
-  }, [selectedCity]);
+  }, [selectedCity, loadPrayerTimes]);
 
   const loadInitialData = async () => {
     setLoading(true);
@@ -71,20 +82,11 @@ const PrayerTimes: React.FC = () => {
         setSelectedCity(defaultCity.value);
       }
     } catch (error) {
+      console.error('Error loading cities:', error);
       setToastMessage('Failed to load cities data');
       setShowToast(true);
     }
     setLoading(false);
-  };
-
-  const loadPrayerTimes = async () => {
-    try {
-      const data = await PrayerTimesService.getPrayerTimes(selectedCity);
-      setPrayerData(data);
-    } catch (error) {
-      setToastMessage('Failed to load prayer times');
-      setShowToast(true);
-    }
   };
 
   const handleNotificationToggle = async (enabled: boolean) => {
@@ -110,6 +112,7 @@ const PrayerTimes: React.FC = () => {
       }
       setShowToast(true);
     } catch (error) {
+      console.error('Error updating notifications:', error);
       setToastMessage('Error updating notification settings');
       setShowToast(true);
       setNotificationsEnabled(!enabled);

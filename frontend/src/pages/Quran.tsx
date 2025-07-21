@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -29,6 +29,24 @@ const Quran: React.FC = () => {
   const [toastMessage, setToastMessage] = useState('');
   const [isOnline, setIsOnline] = useState(OfflineService.isOnline());
 
+  const loadSurahs = useCallback(async () => {
+    setLoading(true);
+    try {
+      const surahList = await QuranService.getSurahs();
+      setSurahs(surahList);
+      
+      if (!isOnline && surahList.length > 0) {
+        setToastMessage('Data Al-Quran dimuat dari penyimpanan offline');
+        setShowToast(true);
+      }
+    } catch (error) {
+      console.error('Error loading surahs:', error);
+      setToastMessage('Failed to load Quran data');
+      setShowToast(true);
+    }
+    setLoading(false);
+  }, [isOnline]);
+
   useEffect(() => {
     loadSurahs();
 
@@ -43,24 +61,7 @@ const Quran: React.FC = () => {
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
     };
-  }, []);
-
-  const loadSurahs = async () => {
-    setLoading(true);
-    try {
-      const surahList = await QuranService.getSurahs();
-      setSurahs(surahList);
-      
-      if (!isOnline && surahList.length > 0) {
-        setToastMessage('Data Al-Quran dimuat dari penyimpanan offline');
-        setShowToast(true);
-      }
-    } catch (error) {
-      setToastMessage('Failed to load Quran data');
-      setShowToast(true);
-    }
-    setLoading(false);
-  };
+  }, [loadSurahs]);
 
   const handleReadSurah = async (surahNumber: number) => {
     // TODO: Navigate to surah reading page
