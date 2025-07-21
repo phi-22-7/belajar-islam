@@ -49,6 +49,7 @@ const Login: React.FC = () => {
         setShowAlert(true);
       }
     } catch (error) {
+      console.error('Login error:', error);
       setAlertMessage('Terjadi kesalahan saat login');
       setShowAlert(true);
     }
@@ -103,7 +104,7 @@ const Login: React.FC = () => {
                   label="Masuk sebagai"
                   labelPlacement="stacked"
                   value={role}
-                  onSelectionChange={(e) => setRole(e.detail.value)}
+                  onIonChange={(e) => setRole(e.detail.value)}
                 >
                   <IonSelectOption value="user">Pengguna</IonSelectOption>
                   <IonSelectOption value="admin">Ustadz</IonSelectOption>

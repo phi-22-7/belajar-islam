@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -13,26 +13,73 @@ import {
   IonItem,
   IonLabel,
   IonButton,
-  IonIcon
+  IonIcon,
+  IonLoading,
+  IonToast
 } from '@ionic/react';
-import { bookOutline } from 'ionicons/icons';
+import { bookOutline, wifiOutline } from 'ionicons/icons';
+import QuranService, { Surah } from '../services/quran';
+import OfflineService from '../services/offline';
 import './Quran.css';
 
 const Quran: React.FC = () => {
-  // Placeholder data - will be replaced with API data
-  const surahs = [
-    { number: 1, name: 'Al-Fatiha', arabicName: 'الْفَاتِحَة', verses: 7 },
-    { number: 2, name: 'Al-Baqarah', arabicName: 'البقرة', verses: 286 },
-    { number: 3, name: 'Ali Imran', arabicName: 'آل عمران', verses: 200 },
-    { number: 4, name: 'An-Nisa', arabicName: 'النساء', verses: 176 },
-    { number: 5, name: 'Al-Maidah', arabicName: 'المائدة', verses: 120 }
-  ];
+  const [surahs, setSurahs] = useState<Surah[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [isOnline, setIsOnline] = useState(OfflineService.isOnline());
+
+  const loadSurahs = useCallback(async () => {
+    setLoading(true);
+    try {
+      const surahList = await QuranService.getSurahs();
+      setSurahs(surahList);
+      
+      if (!isOnline && surahList.length > 0) {
+        setToastMessage('Data Al-Quran dimuat dari penyimpanan offline');
+        setShowToast(true);
+      }
+    } catch (error) {
+      console.error('Error loading surahs:', error);
+      setToastMessage('Failed to load Quran data');
+      setShowToast(true);
+    }
+    setLoading(false);
+  }, [isOnline]);
+
+  useEffect(() => {
+    loadSurahs();
+
+    // Listen for online/offline status changes
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+    
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, [loadSurahs]);
+
+  const handleReadSurah = async (surahNumber: number) => {
+    // TODO: Navigate to surah reading page
+    setToastMessage(`Loading Surah ${surahNumber}...`);
+    setShowToast(true);
+  };
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Al-Quran</IonTitle>
+          <IonButton slot="end" fill="clear">
+            <IonIcon 
+              icon={wifiOutline} 
+              color={isOnline ? 'success' : 'danger'} 
+            />
+          </IonButton>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -42,14 +89,27 @@ const Quran: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         
+        {!isOnline && (
+          <IonCard color="warning">
+            <IonCardContent>
+              <p><strong>Mode Offline</strong> - Menampilkan data tersimpan</p>
+            </IonCardContent>
+          </IonCard>
+        )}
+        
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>Baca Al-Quran</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
             Pilih surah yang ingin Anda baca. Al-Quran terdiri dari 114 surah dengan berbagai jumlah ayat.
+            {!isOnline && surahs.length > 0 && (
+              <p><small><strong>Tersedia offline:</strong> Data surah tersimpan untuk akses tanpa internet.</small></p>
+            )}
           </IonCardContent>
         </IonCard>
+
+        <IonLoading isOpen={loading} message="Loading Quran data..." />
 
         <IonList>
           {surahs.map((surah) => (
@@ -57,15 +117,26 @@ const Quran: React.FC = () => {
               <IonIcon icon={bookOutline} slot="start" />
               <IonLabel>
                 <h2>{surah.number}. {surah.name}</h2>
-                <h3>{surah.arabicName}</h3>
-                <p>{surah.verses} ayat</p>
+                <h3>{surah.arabic_name}</h3>
+                <p>{surah.verses_count} ayat • {surah.revelation_place}</p>
               </IonLabel>
-              <IonButton fill="outline" slot="end">
+              <IonButton 
+                fill="outline" 
+                slot="end"
+                onClick={() => handleReadSurah(surah.number)}
+              >
                 Baca
               </IonButton>
             </IonItem>
           ))}
         </IonList>
+
+        <IonToast
+          isOpen={showToast}
+          onDidDismiss={() => setShowToast(false)}
+          message={toastMessage}
+          duration={2000}
+        />
       </IonContent>
     </IonPage>
   );

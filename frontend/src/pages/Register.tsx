@@ -64,6 +64,7 @@ const Register: React.FC = () => {
         history.push('/login');
       }, 1500);
     } catch (error) {
+      console.error('Registration error:', error);
       setAlertMessage('Terjadi kesalahan saat registrasi');
       setShowAlert(true);
     }
@@ -142,7 +143,7 @@ const Register: React.FC = () => {
                   label="Daftar sebagai"
                   labelPlacement="stacked"
                   value={role}
-                  onSelectionChange={(e) => setRole(e.detail.value)}
+                  onIonChange={(e) => setRole(e.detail.value)}
                 >
                   <IonSelectOption value="user">Pengguna</IonSelectOption>
                   <IonSelectOption value="admin">Ustadz</IonSelectOption>

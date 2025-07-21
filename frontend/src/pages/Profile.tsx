@@ -19,10 +19,16 @@ import { useHistory } from 'react-router-dom';
 import { personOutline, logInOutline, logOutOutline, createOutline, helpCircleOutline } from 'ionicons/icons';
 import './Profile.css';
 
+interface User {
+  name: string;
+  email: string;
+  role: string;
+}
+
 const Profile: React.FC = () => {
   const history = useHistory();
   const [isLoggedIn, setIsLoggedIn] = useState(false); // TODO: Replace with actual auth state
-  const [user, setUser] = useState(null); // TODO: Replace with actual user data
+  const [user, setUser] = useState<User | null>(null); // TODO: Replace with actual user data
 
   const handleLogin = () => {
     history.push('/login');
