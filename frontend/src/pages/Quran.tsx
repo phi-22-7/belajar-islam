@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   IonContent,
   IonHeader,
@@ -23,6 +24,7 @@ import OfflineService from '../services/offline';
 import './Quran.css';
 
 const Quran: React.FC = () => {
+  const history = useHistory();
   const [surahs, setSurahs] = useState<Surah[]>([]);
   const [loading, setLoading] = useState(true);
   const [showToast, setShowToast] = useState(false);
@@ -64,9 +66,8 @@ const Quran: React.FC = () => {
   }, [loadSurahs]);
 
   const handleReadSurah = async (surahNumber: number) => {
-    // TODO: Navigate to surah reading page
-    setToastMessage(`Loading Surah ${surahNumber}...`);
-    setShowToast(true);
+    // Navigate to surah reading page
+    history.push(`/quran/surah/${surahNumber}`);
   };
 
   return (

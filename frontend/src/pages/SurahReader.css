@@ -1,0 +1,90 @@
+/* SurahReader specific styles */
+
+.surah-header {
+  text-align: center;
+  padding: 1rem;
+}
+
+.surah-info h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--ion-color-primary);
+}
+
+.arabic-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: var(--ion-color-dark);
+  direction: rtl;
+  text-align: center;
+}
+
+.surah-info p {
+  font-size: 0.9rem;
+  color: var(--ion-color-medium);
+  margin-top: 0.5rem;
+}
+
+.verse-card {
+  margin: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.verse-number {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.ayah-number {
+  background: var(--ion-color-primary);
+  color: white;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.verse-content {
+  padding: 0 0.5rem;
+}
+
+.arabic-text {
+  font-size: 1.4rem;
+  line-height: 2.2;
+  margin-bottom: 1rem;
+  text-align: right;
+  font-family: 'Amiri', 'Scheherazade', 'Arabic Typesetting', serif;
+  color: var(--ion-color-dark);
+  padding: 1rem;
+  background: var(--ion-color-light);
+  border-radius: 8px;
+  border-right: 4px solid var(--ion-color-primary);
+}
+
+.translation-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ion-color-medium-shade);
+  padding: 0.5rem 0;
+  text-align: justify;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .arabic-text {
+    font-size: 1.2rem;
+    line-height: 2;
+  }
+  
+  .translation-text {
+    font-size: 0.9rem;
+  }
+}
