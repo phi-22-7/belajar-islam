@@ -4,6 +4,19 @@ gem "rails", "~> 8.0.2"
 gem "puma", ">= 5.0"
 gem "sprockets-rails", :require => 'sprockets/railtie'
 
+# MongoDB support
+gem "mongoid", "~> 9.0"
+
+# File upload support  
+gem "carrierwave", "~> 3.0"
+
+# API support
+gem "rack-cors"
+
+# Authentication
+gem "bcrypt", "~> 3.1.7"
+gem "jwt"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 end

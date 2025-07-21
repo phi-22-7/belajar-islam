@@ -1,0 +1,38 @@
+.question-meta {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.question-meta ion-icon {
+  font-size: 12px;
+}
+
+.answer-preview {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #f0f9ff;
+  border-radius: 8px;
+  border-left: 3px solid #3880ff;
+}
+
+.answer-preview strong {
+  color: #3880ff;
+  font-size: 14px;
+}
+
+.answer-preview p {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.question-form {
+  padding: 16px;
+}
+
+.form-buttons {
+  margin-top: 20px;
+  padding: 0 16px;
+}

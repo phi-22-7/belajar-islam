@@ -1,0 +1,11 @@
+.register-form {
+  padding: 16px;
+}
+
+.form-buttons {
+  margin-top: 24px;
+}
+
+.form-buttons ion-button {
+  margin-bottom: 12px;
+}
