@@ -1,0 +1,46 @@
+{
+  "name": "Al-Munafiqun",
+  "name_translations": {
+    "ar": "المنافقون",
+    "en": "The Hypocrites",
+    "id": "Orang-Orang Munafik"
+  },
+  "number_of_ayah": 11,
+  "number_of_surah": 63,
+  "place": "Medina",
+  "recitation": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/063.mp3",
+  "type": "Madaniyah",
+  "recitations": [
+    {
+      "name": "Mishari Rashid al-`Afasy",
+      "audio_url": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/063.mp3"
+    },
+    {
+      "name": "Abdur-Rahman as-Sudais",
+      "audio_url": "https://download.quranicaudio.com/quran/abdurrahmaan_as-sudays/063.mp3"
+    },
+    {
+      "name": "Saad al-Ghamdi",
+      "audio_url": "https://download.quranicaudio.com/quran/sa3d_al-ghaamidi/complete/063.mp3"
+    }
+  ],
+  "verses": [
+    {
+      "number": 1,
+      "text": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "translation_en": "[Placeholder verse - needs complete QuranJSON data]",
+      "translation_id": "[Placeholder verse - memerlukan data QuranJSON lengkap]"
+    }
+  ],
+  "tafsir": {
+    "id": {
+      "kemenag": {
+        "name": "Kemenag",
+        "source": "Aplikasi Quran Kementrian Agama Republik Indonesia",
+        "text": {
+          "1": "[Tafsir untuk Al-Munafiqun - memerlukan data lengkap dari sumber QuranJSON]"
+        }
+      }
+    }
+  }
+}
