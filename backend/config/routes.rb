@@ -18,6 +18,11 @@ Rails.application.routes.draw do
     
     get 'prayer-times/:city', to: 'prayer_times#get_times'
     get 'cities', to: 'prayer_times#cities'
+    
+    # Notification routes
+    post 'notifications/enable-prayer', to: 'notifications#enable_prayer_notifications'
+    delete 'notifications/disable-prayer', to: 'notifications#disable_prayer_notifications'
+    put 'notifications/fcm-token', to: 'notifications#update_fcm_token'
   end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

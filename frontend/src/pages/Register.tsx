@@ -142,7 +142,7 @@ const Register: React.FC = () => {
                   label="Daftar sebagai"
                   labelPlacement="stacked"
                   value={role}
-                  onSelectionChange={(e) => setRole(e.detail.value)}
+                  onIonChange={(e) => setRole(e.detail.value)}
                 >
                   <IonSelectOption value="user">Pengguna</IonSelectOption>
                   <IonSelectOption value="admin">Ustadz</IonSelectOption>

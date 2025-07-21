@@ -7,6 +7,9 @@ class User
   field :role, type: String
   field :name, type: String
   
+  # File upload
+  mount_uploader :avatar, ImageUploader
+  
   # Add authentication
   has_secure_password
   
