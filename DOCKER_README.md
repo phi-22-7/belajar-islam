@@ -78,9 +78,35 @@ docker compose down -v
 - Ensure MongoDB service is running: `docker compose logs mongodb`
 - Verify the backend can connect: `docker compose logs backend`
 
+### SSL Certificate Issues During Build
+If you encounter SSL certificate errors during the Docker build (particularly for the Ruby backend), you can:
+
+1. **Try building with different SSL settings**:
+   ```bash
+   # Edit backend/Dockerfile and add before bundle install:
+   # RUN bundle config set --global ssl_verify_mode 0
+   ```
+
+2. **Use host networking** (Linux only):
+   ```bash
+   docker compose build --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy
+   ```
+
+3. **Build on host and copy** (alternative approach):
+   ```bash
+   # Run bundle install on host first, then build
+   cd backend && bundle install
+   cd .. && docker compose build
+   ```
+
 ### Reset everything
 ```bash
 docker compose down -v
 docker compose build --no-cache
 docker compose up
 ```
+
+### Performance Notes
+- The first build may take 10-15 minutes depending on your internet connection
+- Subsequent builds will be faster due to Docker layer caching
+- Consider using `docker compose up -d` to run in background
